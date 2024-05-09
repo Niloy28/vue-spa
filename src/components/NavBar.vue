@@ -4,14 +4,11 @@
       <a href="#" class="navbar-brand">My Vue</a>
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li v-for="(page, index) in pages" class="nav-item" :key="index">
-          <a
-            :href="page.link.url"
-            class="nav-link"
-            :class="{ active: activePage == index }"
-            :title="`This link goes to the ${page.link.text} page`"
+          <NavBarLink
+            :page="page"
+            :isActive="activePage == index"
             @click.prevent="navLinkClick(index)"
-            >{{ page.link.text }}</a
-          >
+          ></NavBarLink>
         </li>
       </ul>
       <form class="d-flex">
@@ -22,7 +19,12 @@
 </template>
 
 <script>
+import NavBarLink from './NavBarLink.vue'
+
 export default {
+  components: {
+    NavBarLink
+  },
   props: ['pages', 'activePage', 'navLinkClick'],
   data() {
     return {
