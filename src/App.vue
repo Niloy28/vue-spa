@@ -6,16 +6,20 @@
   ></NavBar>
 
   <PageViewer v-if="pages.length > 0" :page="pages[activePage]"></PageViewer>
+
+  <CreatePage :page-created="createPage"></CreatePage>
 </template>
 
 <script>
 import PageViewer from './components/PageViewer.vue'
 import NavBar from './components/NavBar.vue'
+import CreatePage from './components/CreatePage.vue'
 
 export default {
   components: {
     NavBar,
-    PageViewer
+    PageViewer,
+    CreatePage
   },
   created() {
     this.getPages()
@@ -32,6 +36,9 @@ export default {
       let data = await res.json()
 
       this.pages = data
+    },
+    createPage(page) {
+      this.pages.push(page)
     }
   }
 }
