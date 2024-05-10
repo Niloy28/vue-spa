@@ -103,6 +103,21 @@ export default {
 
       this.pageTitle = this.pageContent = this.pageName = this.pageUrl = ''
       this.publish = true
+    },
+    computePageUrl(pageName) {
+      return `${pageName.toLowerCase().replace(' ', '-')}.html`
+    }
+  },
+  watch: {
+    pageTitle(newTitle, oldTitle) {
+      if (this.pageName == oldTitle) {
+        this.pageName = newTitle
+      }
+    },
+    pageName(newName, oldName) {
+      if (this.pageUrl.length == 0 || this.pageUrl == this.computePageUrl(oldName)) {
+        this.pageUrl = this.computePageUrl(newName)
+      }
     }
   }
 }
