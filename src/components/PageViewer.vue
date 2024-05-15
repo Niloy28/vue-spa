@@ -7,7 +7,25 @@
 
 <script>
 export default {
-  props: ['page']
+  props: ['index'],
+  data() {
+    return {
+      page: null
+    }
+  },
+  created() {
+    this.page = this.$pages.getSinglePage(this.index)
+  },
+  methods: {
+    loadPageData(pageIndex) {
+      this.page = this.$pages.getSinglePage(pageIndex)
+    }
+  },
+  watch: {
+    index() {
+      this.loadPageData(this.index)
+    }
+  }
 }
 </script>
 

@@ -6,9 +6,10 @@ const router = createRouter({
   history: createWebHashHistory(),
   routes: [
     {
-      path: '/',
+      path: '/:index?',
       name: 'Home',
-      component: PageViewer
+      component: PageViewer,
+      props: true
     },
     {
       path: '/create',

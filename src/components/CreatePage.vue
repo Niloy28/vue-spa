@@ -72,7 +72,6 @@
 
 <script>
 export default {
-  props: ['pageCreated'],
   computed: {
     isFormInvalid() {
       return !this.pageTitle || !this.pageContent || !this.pageName || !this.pageUrl
@@ -104,7 +103,7 @@ export default {
       // If the page is being published, call the `pageCreated` prop with
       // the new page object.
       if (this.publish) {
-        this.pageCreated(newPage)
+        this.$emit('pageCreated', newPage)
       } else {
         // If the page is not being published, log the new page object
         // to the console.
