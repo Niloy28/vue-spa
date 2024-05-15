@@ -1,6 +1,8 @@
 import { createRouter, createWebHashHistory } from 'vue-router'
-import PageViewer from './components/PageViewer.vue'
-import CreatePage from './components/CreatePage.vue'
+import PageManagement from './views/PageManagement.vue'
+import PageViewer from './views/PageViewer.vue'
+import CreatePage from './views/CreatePage.vue'
+import PageList from './views/PageList.vue'
 
 const router = createRouter({
   history: createWebHashHistory(),
@@ -12,9 +14,20 @@ const router = createRouter({
       props: true
     },
     {
-      path: '/create',
-      name: 'Create A New Page',
-      component: CreatePage
+      path: '/pages',
+      component: PageManagement,
+      children: [
+        {
+          path: '',
+          name: 'Pages',
+          component: PageList
+        },
+        {
+          path: 'create',
+          name: 'Create A New Page',
+          component: CreatePage
+        }
+      ]
     }
   ]
 })

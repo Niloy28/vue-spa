@@ -12,7 +12,9 @@
         ></NavBarLink>
 
         <li>
-          <RouterLink to="/create" class="nav-link" activeClass="active">Create Page</RouterLink>
+          <RouterLink to="/pages/create" class="nav-link" activeClass="active"
+            >Create Page</RouterLink
+          >
         </li>
       </ul>
       <form class="d-flex">
