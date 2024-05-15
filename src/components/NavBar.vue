@@ -9,8 +9,11 @@
           :key="index"
           :index="index"
           :page="page"
-          :isActive="activePage == index"
         ></NavBarLink>
+
+        <li>
+          <RouterLink to="/create" class="nav-link" activeClass="active">Create Page</RouterLink>
+        </li>
       </ul>
       <form class="d-flex">
         <button class="btn btn-primary" @click.prevent="changeTheme()">Toggle Theme</button>
@@ -26,11 +29,14 @@ export default {
   components: {
     NavBarLink
   },
-  props: ['pages', 'activePage'],
   data() {
     return {
-      theme: 'light'
+      theme: 'light',
+      pages: []
     }
+  },
+  created() {
+    this.pages = this.$pages.getAllPages()
   },
   methods: {
     changeTheme() {
