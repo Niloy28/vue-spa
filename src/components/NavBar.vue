@@ -4,7 +4,7 @@
       <a href="#" class="navbar-brand">My Vue</a>
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <NavBarLink
-          v-for="(page, index) in pages"
+          v-for="(page, index) in pages.filter((page) => page.published)"
           class="nav-item"
           :key="index"
           :index="index"

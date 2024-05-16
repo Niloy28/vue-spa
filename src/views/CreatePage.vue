@@ -51,7 +51,7 @@
           </div>
 
           <div>
-            <input type="checkbox" name="publish" id="publish" v-model="publish" />
+            <input type="checkbox" name="publish" id="publish" v-model="published" />
             <label for="publish" class="form-label ms-2">Publish the page?</label>
           </div>
         </div>
@@ -83,7 +83,7 @@ export default {
       pageContent: '',
       pageName: '',
       pageUrl: '',
-      publish: true
+      published: true
     }
   },
   methods: {
@@ -97,12 +97,13 @@ export default {
       const newPage = {
         link: { text: this.pageName, url: `${this.pageUrl}.html` },
         pageTitle: this.pageTitle,
-        pageContent: this.pageContent
+        pageContent: this.pageContent,
+        published: this.published
       }
 
       // If the page is being published, call the `pageCreated` prop with
       // the new page object.
-      if (this.publish) {
+      if (this.published) {
         this.$emit('pageCreated', newPage)
       } else {
         // If the page is not being published, log the new page object
@@ -112,7 +113,7 @@ export default {
 
       // Reset the form data to empty strings and set `publish` back to true.
       this.pageTitle = this.pageContent = this.pageName = this.pageUrl = ''
-      this.publish = true
+      this.published = true
     },
     /**
      * Computes the page URL based on the page name.
