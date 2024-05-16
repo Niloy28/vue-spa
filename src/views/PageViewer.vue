@@ -8,6 +8,7 @@
 <script>
 export default {
   props: ['index'],
+  inject: ['$pages'],
   data() {
     return {
       page: null

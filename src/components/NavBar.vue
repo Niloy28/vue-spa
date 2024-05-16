@@ -12,9 +12,7 @@
         ></NavBarLink>
 
         <li>
-          <RouterLink to="/pages/create" class="nav-link" activeClass="active"
-            >Create Page</RouterLink
-          >
+          <RouterLink to="/pages" class="nav-link" activeClass="active">Pages</RouterLink>
         </li>
       </ul>
       <form class="d-flex">
@@ -31,6 +29,7 @@ export default {
   components: {
     NavBarLink
   },
+  inject: ['$pages'],
   data() {
     return {
       theme: 'light',
@@ -42,9 +41,7 @@ export default {
   },
   methods: {
     changeTheme() {
-      let theme
-
-      theme = this.theme == 'light' ? 'dark' : 'light'
+      const theme = this.theme == 'light' ? 'dark' : 'light'
       this.theme = theme
     }
   }
