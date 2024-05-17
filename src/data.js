@@ -10,6 +10,10 @@ if (pagesJson) {
   localStorage.setItem(pagesKey, JSON.stringify(pages))
 }
 
+function saveToLocalStorage() {
+  localStorage.setItem(pages, JSON.stringify(pages))
+}
+
 export default {
   getAllPages() {
     return pages
@@ -26,7 +30,7 @@ export default {
   addPage(newPage) {
     pages.push(newPage)
 
-    localStorage.setItem(pagesKey, JSON.stringify(pages))
+    saveToLocalStorage()
   },
 
   editPage(index, page) {
@@ -35,6 +39,12 @@ export default {
     }
 
     pages[index] = page
-    localStorage.setItem(pagesKey, JSON.stringify(pages))
+    saveToLocalStorage()
+  },
+
+  deletePage(index) {
+    pages.splice(index, 1)
+
+    saveToLocalStorage()
   }
 }

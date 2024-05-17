@@ -46,16 +46,14 @@
           </div>
         </div>
       </div>
-      <div class="mb-3">
-        <button
-          type="button"
-          class="btn btn-primary m-3"
-          :disabled="isFormInvalid"
-          @click.prevent="updatePage"
-        >
-          Update Page
-        </button>
-        <button class="btn btn-secondary m-2" @click.prevent="goToPageList">Cancel</button>
+      <div class="d-flex mb-3 justify-content-between">
+        <div>
+          <button type="button" class="btn btn-primary mx-1" @click.prevent="updatePage">
+            Update Page
+          </button>
+          <button class="btn btn-secondary mx-2" @click.prevent="goToPageList">Cancel</button>
+        </div>
+        <button class="btn btn-danger" @click.prevent="deletePage">Delete</button>
       </div>
     </form>
   </div>
@@ -76,6 +74,14 @@ function updatePage() {
   pages.editPage(index, page)
 
   bus.$emit('page-updated')
+
+  goToPageList()
+}
+
+function deletePage() {
+  pages.deletePage(index)
+
+  bus.$emit('page-deleted')
 
   goToPageList()
 }
