@@ -23,6 +23,12 @@ export default {
     return pages[index]
   },
 
+  addPage(newPage) {
+    pages.push(newPage)
+
+    localStorage.setItem(pagesKey, JSON.stringify(pages))
+  },
+
   editPage(index, page) {
     if (index < 0 || index >= pages.length) {
       throw new Error('Invalid index')

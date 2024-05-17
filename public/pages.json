@@ -1,18 +1,18 @@
 [
   {
-    "link": { "text": "Home", "url": "index.html" },
+    "link": { "text": "Home" },
     "pageTitle": "Home",
     "pageContent": "This is the home page",
     "published": "true"
   },
   {
-    "link": { "text": "About", "url": "index.html" },
+    "link": { "text": "About" },
     "pageTitle": "About",
     "pageContent": "This is the about page",
     "published": "true"
   },
   {
-    "link": { "text": "Contact", "url": "index.html" },
+    "link": { "text": "Contact" },
     "pageTitle": "Contact",
     "pageContent": "This is the contact page",
     "published": "true"

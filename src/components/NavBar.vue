@@ -42,6 +42,10 @@ export default {
     this.$bus.$on('page-updated', () => {
       this.pages = [...this.$pages.getAllPages()]
     })
+
+    this.$bus.$on('page-created', () => {
+      this.pages = [...this.$pages.getAllPages()]
+    })
   },
   methods: {
     changeTheme() {
