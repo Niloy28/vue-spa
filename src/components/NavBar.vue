@@ -29,7 +29,7 @@ export default {
   components: {
     NavBarLink
   },
-  inject: ['$pages'],
+  inject: ['$pages', '$bus'],
   data() {
     return {
       theme: 'light',
@@ -38,6 +38,10 @@ export default {
   },
   created() {
     this.pages = this.$pages.getAllPages()
+
+    this.$bus.$on('page-updated', () => {
+      this.pages = [...this.$pages.getAllPages()]
+    })
   },
   methods: {
     changeTheme() {

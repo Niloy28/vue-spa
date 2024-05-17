@@ -47,17 +47,40 @@
         </div>
       </div>
       <div class="mb-3">
-        <button type="button" class="btn btn-primary" :disabled="isFormInvalid">Update Page</button>
+        <button
+          type="button"
+          class="btn btn-primary m-3"
+          :disabled="isFormInvalid"
+          @click.prevent="updatePage"
+        >
+          Update Page
+        </button>
+        <button class="btn btn-secondary m-2" @click.prevent="goToPageList">Cancel</button>
       </div>
     </form>
   </div>
 </template>
 
 <script setup>
+import { useRouter } from 'vue-router'
 import { inject } from 'vue'
 
+const router = useRouter()
 const { index } = defineProps(['index'])
 const pages = inject('$pages')
+const bus = inject('$bus')
 
 const page = pages.getSinglePage(index)
+
+function updatePage() {
+  pages.editPage(index, page)
+
+  bus.$emit('page-updated')
+
+  goToPageList()
+}
+
+function goToPageList() {
+  router.push({ path: '/pages' })
+}
 </script>
